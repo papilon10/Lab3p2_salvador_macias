@@ -16,6 +16,32 @@ public class cliente {
     public String id;
     public ArrayList<reserva> reservas;
 
+    public cliente(String nombre, String id) {
+        this.nombre = nombre;
+        this.id = id;
+    }
+
+    public cliente() {
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    
     public void agregarReserva(reserva reserva) {
 
     }

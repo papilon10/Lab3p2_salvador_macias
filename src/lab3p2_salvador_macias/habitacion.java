@@ -15,6 +15,12 @@ public class habitacion {
     public boolean ocupada;
     public cliente clienteActual;
 
+    public habitacion(int numero, TipoHabitacion tipo, cliente clienteActual) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.clienteActual = clienteActual;
+    }
+
     public boolean estaDisponible() {
 
         return false;
@@ -31,7 +37,7 @@ public class habitacion {
 
     @Override
     public String toString() {
-        return "habitacion{" + "numero=" + numero + ", tipo=" + tipo + ", ocupada=" + ocupada + ", clienteActual=" + clienteActual + '}';
+        return "Numero de habitacion: "+ numero + "\n" + "tipo de habitacion: " + tipo;
     }
 
 }

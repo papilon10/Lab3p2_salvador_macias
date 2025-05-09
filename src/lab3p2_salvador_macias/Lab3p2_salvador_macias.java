@@ -17,7 +17,8 @@ public class Lab3p2_salvador_macias {
      * @param args the command line arguments
      */
     public static ArrayList<reserva> historial = new ArrayList();
-    public static ArrayList lista = new ArrayList();
+    public static ArrayList<cliente> clientes = new ArrayList();
+    public static ArrayList<habitacion> habitaciones = new ArrayList();
 
     public static Scanner lea = new Scanner(System.in);
     public static Scanner str = new Scanner(System.in);
@@ -38,15 +39,49 @@ public class Lab3p2_salvador_macias {
             switch (opc) {
                 case 1: {
 
+                    System.out.println("ingrese el nombre: ");
+                    String nombre = str.nextLine();
+                    System.out.println("Ingrese la identidad: ");
+                    String id = str.nextLine();
+                    clientes.add(new cliente(nombre, id));
+
                 }
 
                 break;
+
                 case 2: {
+                    System.out.println("ingrese el numero: ");
+                    int numero = lea.nextInt();
+                    cliente vacio = null;
+                    System.out.println("ingrese el tipo de habitacion: "
+                            + "\n(0.SIMPLE"
+                            + "\n1.DOBLE"
+                            + "\n2.SUITE)");
+                    int tipo_habitacion = lea.nextInt();
+                    if (tipo_habitacion==0) {
+                        TipoHabitacion convertir = TipoHabitacion.SIMPLE;
+                        habitaciones.add(new habitacion(numero, TipoHabitacion.SIMPLE, vacio));
+
+                    } else if (tipo_habitacion==1) {
+                        TipoHabitacion convertir = TipoHabitacion.DOBLE;
+                        habitaciones.add(new habitacion(numero, TipoHabitacion.DOBLE, vacio));
+
+                    } else if (tipo_habitacion==2) {
+                        TipoHabitacion convertir = TipoHabitacion.SUITE;
+                        habitaciones.add(new habitacion(numero, TipoHabitacion.SUITE, vacio));
+
+                    } else {
+                        System.out.println("el tipo de habitacion es invalido.");
+
+                    }
 
                 }
 
                 break;
                 case 3: {
+                    System.out.println("");
+                lista_habitacionesDisponibles();
+                    System.out.println("");
 
                 }
 
@@ -77,8 +112,27 @@ public class Lab3p2_salvador_macias {
                     System.out.println("la opcion ingresada es invalida");
             }
 
-        } while (salida != true);//fin while
+        } while (salida
+                != true);//fin while
 
     }//fin main
+    
+    public static void lista_habitacionesDisponibles(){
+        if (true) {
+            
+        }
+        System.out.println("---habitaciones disponibles---");
+        if (habitaciones.isEmpty()) {
+            System.out.println("la lista de habitaciones esta vacia");
+        } else {
+            for (int i = 0; i < habitaciones.size(); i++) {
+                System.out.println(
+                        habitaciones.indexOf(habitaciones.get(i)) + "-"
+                        + habitaciones.get(i)
+                );
+            }
+        }
+    
+    }
 
 }//fin clase
