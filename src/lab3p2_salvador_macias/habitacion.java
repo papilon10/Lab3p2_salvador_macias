@@ -35,6 +35,23 @@ public class habitacion {
 
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public TipoHabitacion getTipo() {
+        return tipo;
+    }
+
+    public boolean isOcupada() {
+        return ocupada;
+    }
+
+    public cliente getClienteActual() {
+        return clienteActual;
+    }
+    
+
     @Override
     public String toString() {
         return "Numero de habitacion: "+ numero + "\n" + "tipo de habitacion: " + tipo;

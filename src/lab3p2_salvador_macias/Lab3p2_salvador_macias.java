@@ -58,15 +58,15 @@ public class Lab3p2_salvador_macias {
                             + "\n1.DOBLE"
                             + "\n2.SUITE)");
                     int tipo_habitacion = lea.nextInt();
-                    if (tipo_habitacion==0) {
+                    if (tipo_habitacion == 0) {
                         TipoHabitacion convertir = TipoHabitacion.SIMPLE;
                         habitaciones.add(new habitacion(numero, TipoHabitacion.SIMPLE, vacio));
 
-                    } else if (tipo_habitacion==1) {
+                    } else if (tipo_habitacion == 1) {
                         TipoHabitacion convertir = TipoHabitacion.DOBLE;
                         habitaciones.add(new habitacion(numero, TipoHabitacion.DOBLE, vacio));
 
-                    } else if (tipo_habitacion==2) {
+                    } else if (tipo_habitacion == 2) {
                         TipoHabitacion convertir = TipoHabitacion.SUITE;
                         habitaciones.add(new habitacion(numero, TipoHabitacion.SUITE, vacio));
 
@@ -80,13 +80,14 @@ public class Lab3p2_salvador_macias {
                 break;
                 case 3: {
                     System.out.println("");
-                lista_habitacionesDisponibles();
+                    lista_habitacionesDisponibles();
                     System.out.println("");
 
                 }
 
                 break;
                 case 4: {
+                    reservar();
 
                 }
 
@@ -97,6 +98,7 @@ public class Lab3p2_salvador_macias {
 
                 break;
                 case 6: {
+                    cliente.mostrarHistorial(historial);
 
                 }
 
@@ -116,10 +118,10 @@ public class Lab3p2_salvador_macias {
                 != true);//fin while
 
     }//fin main
-    
-    public static void lista_habitacionesDisponibles(){
+
+    public static void lista_habitacionesDisponibles() {
         if (true) {
-            
+
         }
         System.out.println("---habitaciones disponibles---");
         if (habitaciones.isEmpty()) {
@@ -132,7 +134,46 @@ public class Lab3p2_salvador_macias {
                 );
             }
         }
-    
+
     }
 
+    public static void reservar() {
+        System.out.println("ingrese la identidad: ");
+        String id = str.nextLine();
+        cliente x = new cliente("juan", id);
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId().equals(id)) {
+                System.out.println("la identidad no esta registrada en el sistema");
+            } else {
+                lista_habitacionesDisponibles();
+                System.out.println("ingrese el numero de la habitacion : ");
+                int numero = lea.nextInt();
+                // habitaciones.get(numero);
+                System.out.println("ingrese el numero de noches: ");
+                int noches = lea.nextInt();
+                historial.add(new reserva(habitaciones.get(numero), noches));
+                System.out.println("la reserva se realizo con exito");
+                System.out.println("costo total:");
+                System.out.println("LPS " + historial.get(i));
+
+            }
+
+        }
+    }
+
+    public static void cancelar_reserva() {
+        System.out.println("ingrese la identidad : ");
+        String id = str.nextLine();
+        cliente x = new cliente("juan", id);
+        for (int i = 0; i < historial.size(); i++) {
+            
+        }
+
+    }
+    
+    public static void listar_reservas(){
+        
+    
+    
+    }
 }//fin clase

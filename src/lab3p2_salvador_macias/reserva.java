@@ -19,13 +19,27 @@ public class reserva {
         this.noches = noches;
     }
 
+    public habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public int getNoches() {
+        return noches;
+    }
+    
+    
+
     public double getCosto_total() {
-        return costo_total;
+        
+        return noches*habitacion.tipo.getPrecio();
     }
 
     @Override
     public String toString() {
-        return "reserva{" + "habitacion=" + habitacion + ", noches=" + noches + ", costo_total=" + costo_total + '}';
+        
+       return "habitacion: "+ habitacion
+               +"\n numero de noches: "+ noches
+               +"costo total : "+getCosto_total() + " LPS";
     }
 
 }

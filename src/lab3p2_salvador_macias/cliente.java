@@ -40,25 +40,36 @@ public class cliente {
         this.id = id;
     }
 
-    
-    
     public void agregarReserva(reserva reserva) {
+        this.reservas.add(new reserva(reserva.getHabitacion(), reserva.getNoches()));
 
     }
 
-    public void mostrarHistorial() {
+    public static void mostrarHistorial(ArrayList reservas) {
+        for (int i = 0; i < reservas.size(); i++) {
+            System.out.println(
+                    reservas.indexOf(reservas.get(i)) + "-"
+                    + reservas.get(i)
+            );
+        }
 
     }
 
     double calcularGasto() {
+        double gastoTot = 0.0;
+        for (int i = 0; i < reservas.size(); i++) {
 
-        return 0;
+            gastoTot += reservas.get(i).getCosto_total();
+        }
+
+        return gastoTot;
 
     }
 
     @Override
     public String toString() {
-        return "cliente{" + "nombre=" + nombre + ", id=" + id + ", reservas=" + reservas + '}';
+        return " nombre del cliente: " + nombre
+                + "\n id: " + id;
     }
 
 }
