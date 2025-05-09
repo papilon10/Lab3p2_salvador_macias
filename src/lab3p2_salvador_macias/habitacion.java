@@ -19,11 +19,13 @@ public class habitacion {
         this.numero = numero;
         this.tipo = tipo;
         this.clienteActual = clienteActual;
+        this.ocupada = false; 
+
     }
 
     public boolean estaDisponible() {
 
-        return false;
+          return !ocupada; 
 
     }
 
@@ -32,6 +34,8 @@ public class habitacion {
     }
 
     public void liberar() {
+        this.ocupada = false;
+        this.clienteActual = null;
 
     }
 
@@ -50,11 +54,11 @@ public class habitacion {
     public cliente getClienteActual() {
         return clienteActual;
     }
-    
 
     @Override
     public String toString() {
-        return "Numero de habitacion: "+ numero + "\n" + "tipo de habitacion: " + tipo;
+        return "Numero de habitacion: " + numero + "\n" + "tipo de habitacion: " + tipo
+                +"\n estado de la habitacion: "+ isOcupada();
     }
 
 }

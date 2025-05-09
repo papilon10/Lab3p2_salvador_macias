@@ -6,6 +6,7 @@ package lab3p2_salvador_macias;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import static lab3p2_salvador_macias.Lab3p2_salvador_macias.historial;
 
 /**
  *
@@ -88,17 +89,23 @@ public class Lab3p2_salvador_macias {
                 break;
                 case 4: {
                     reservar();
+                   
 
                 }
 
                 break;
                 case 5: {
+                   cancelar_reserva();
 
                 }
 
                 break;
                 case 6: {
                     cliente.mostrarHistorial(historial);
+                    for (int i = 0; i < clientes.size(); i++) {
+                        System.out.println(clientes.get(i));
+
+                    }
 
                 }
 
@@ -143,8 +150,6 @@ public class Lab3p2_salvador_macias {
         cliente x = new cliente("juan", id);
         for (int i = 0; i < clientes.size(); i++) {
             if (clientes.get(i).getId().equals(id)) {
-                System.out.println("la identidad no esta registrada en el sistema");
-            } else {
                 lista_habitacionesDisponibles();
                 System.out.println("ingrese el numero de la habitacion : ");
                 int numero = lea.nextInt();
@@ -155,6 +160,9 @@ public class Lab3p2_salvador_macias {
                 System.out.println("la reserva se realizo con exito");
                 System.out.println("costo total:");
                 System.out.println("LPS " + historial.get(i));
+            } else {
+
+                System.out.println("la identidad no esta registrada en el sistema");
 
             }
 
@@ -162,18 +170,50 @@ public class Lab3p2_salvador_macias {
     }
 
     public static void cancelar_reserva() {
-        System.out.println("ingrese la identidad : ");
+       System.out.print("Ingrese la id del cliente: ");
         String id = str.nextLine();
-        cliente x = new cliente("juan", id);
-        for (int i = 0; i < historial.size(); i++) {
-            
+
+        cliente clienteEncontrado = buscarCliente(id);
+        if (clienteEncontrado == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
         }
+
+        ArrayList<reserva> reservasCliente = clienteEncontrado.getReservas();
+        if (reservasCliente.isEmpty()) {
+            System.out.println("El cliente no tiene reservas.");
+            return;
+        }
+
+        for (reserva r : reservasCliente) {
+            r.getHabitacion().liberar();
+        }
+
+        reservasCliente.clear(); 
+        System.out.println("Reservas canceladas y habitaciones liberadas.");
+
+    }
+
+    public static void listar_reservas(ArrayList<reserva> historial) {
+        System.out.print("Ingrese documento ID del cliente: ");
+        String id = str.nextLine();
+
+        cliente clienteEncontrado = buscarCliente(id);
+        if (clienteEncontrado == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+       // clienteEncontrado.mostrarHistorial(ArrayList<reserva> historial);
 
     }
     
-    public static void listar_reservas(){
-        
-    
-    
+    public static cliente buscarCliente(String id) {
+        for (cliente c : clientes) {
+            if (c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
     }
 }//fin clase

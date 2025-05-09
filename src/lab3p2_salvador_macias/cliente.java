@@ -28,6 +28,14 @@ public class cliente {
         return nombre;
     }
 
+    public ArrayList<reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<reserva> reservas) {
+        this.reservas = reservas;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -68,8 +76,9 @@ public class cliente {
 
     @Override
     public String toString() {
-        return " nombre del cliente: " + nombre
-                + "\n id: " + id;
+        return " gasto total : " + calcularGasto() + " LPS" // + "nombre del cliente: " + nombre
+                //+ "\n id: " + id;
+                ;
     }
 
 }
