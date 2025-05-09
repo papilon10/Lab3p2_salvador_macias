@@ -5,6 +5,7 @@
 package lab3p2_salvador_macias;
 
 import java.util.ArrayList;
+import javax.tools.Tool;
 
 /**
  *
@@ -19,6 +20,8 @@ public class cliente {
     public cliente(String nombre, String id) {
         this.nombre = nombre;
         this.id = id;
+        this.reservas = new ArrayList<>();
+
     }
 
     public cliente() {
@@ -49,17 +52,18 @@ public class cliente {
     }
 
     public void agregarReserva(reserva reserva) {
-        this.reservas.add(new reserva(reserva.getHabitacion(), reserva.getNoches()));
+        this.reservas.add(reserva);
 
     }
 
-    public static void mostrarHistorial(ArrayList reservas) {
+    public void mostrarHistorial() {
         for (int i = 0; i < reservas.size(); i++) {
-            System.out.println(
-                    reservas.indexOf(reservas.get(i)) + "-"
+            System.out.println(reservas.indexOf(reservas.get(i)) + "-"
                     + reservas.get(i)
             );
+            System.out.println("Gasto total: Lps " + calcularGasto());
         }
+        this.toString();
 
     }
 
@@ -76,7 +80,9 @@ public class cliente {
 
     @Override
     public String toString() {
-        return " gasto total : " + calcularGasto() + " LPS" // + "nombre del cliente: " + nombre
+        return  
+                 "\n gasto total : " + calcularGasto() + " LPS" // + "nombre del cliente: " + nombre
+                
                 //+ "\n id: " + id;
                 ;
     }

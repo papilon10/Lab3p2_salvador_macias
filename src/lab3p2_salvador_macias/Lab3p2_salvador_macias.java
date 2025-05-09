@@ -89,24 +89,18 @@ public class Lab3p2_salvador_macias {
                 break;
                 case 4: {
                     reservar();
-                   
 
                 }
 
                 break;
                 case 5: {
-                   cancelar_reserva();
+                    cancelar_reserva();
 
                 }
 
                 break;
                 case 6: {
-                    cliente.mostrarHistorial(historial);
-                    for (int i = 0; i < clientes.size(); i++) {
-                        System.out.println(clientes.get(i));
-
-                    }
-
+                    verHistorialReservas();
                 }
 
                 break;
@@ -170,7 +164,7 @@ public class Lab3p2_salvador_macias {
     }
 
     public static void cancelar_reserva() {
-       System.out.print("Ingrese la id del cliente: ");
+        System.out.print("Ingrese la id del cliente: ");
         String id = str.nextLine();
 
         cliente clienteEncontrado = buscarCliente(id);
@@ -189,7 +183,7 @@ public class Lab3p2_salvador_macias {
             r.getHabitacion().liberar();
         }
 
-        reservasCliente.clear(); 
+        reservasCliente.clear();
         System.out.println("Reservas canceladas y habitaciones liberadas.");
 
     }
@@ -204,10 +198,9 @@ public class Lab3p2_salvador_macias {
             return;
         }
 
-       // clienteEncontrado.mostrarHistorial(ArrayList<reserva> historial);
-
+        clienteEncontrado.mostrarHistorial();
     }
-    
+
     public static cliente buscarCliente(String id) {
         for (cliente c : clientes) {
             if (c.getId().equals(id)) {
@@ -215,5 +208,18 @@ public class Lab3p2_salvador_macias {
             }
         }
         return null;
+    }
+
+    public static void verHistorialReservas() {
+        System.out.print("Ingrese documento ID del cliente: ");
+        String id = str.nextLine();
+
+        cliente clienteEncontrado = buscarCliente(id);
+        if (clienteEncontrado == null) {
+            System.out.println("Cliente no encontrado.");
+            return;
+        }
+
+        clienteEncontrado.mostrarHistorial();
     }
 }//fin clase

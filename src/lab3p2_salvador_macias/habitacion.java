@@ -58,7 +58,7 @@ public class habitacion {
     @Override
     public String toString() {
         return "Numero de habitacion: " + numero + "\n" + "tipo de habitacion: " + tipo
-                +"\n estado de la habitacion: "+ isOcupada();
+                +"\n la habitacion esta ocupada ? : "+ isOcupada();
     }
 
 }
