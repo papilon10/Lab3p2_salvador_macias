@@ -4,10 +4,35 @@
  */
 package lab3p2_salvador_macias;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Apple
  */
 public class cliente {
-    
+
+    public String nombre;
+    public String id;
+    public ArrayList<reserva> reservas;
+
+    public void agregarReserva(reserva reserva) {
+
+    }
+
+    public void mostrarHistorial() {
+
+    }
+
+    double calcularGasto() {
+
+        return 0;
+
+    }
+
+    @Override
+    public String toString() {
+        return "cliente{" + "nombre=" + nombre + ", id=" + id + ", reservas=" + reservas + '}';
+    }
+
 }
